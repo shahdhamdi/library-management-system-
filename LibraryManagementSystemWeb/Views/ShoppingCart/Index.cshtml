@@ -1,0 +1,41 @@
+﻿@model LibraryManagementSystem.Models.Cart
+
+<h2>Shopping Cart</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+@if (Model.cart!=null)
+{
+   
+            @foreach (var book in Model.cart)
+            {
+                <tr>
+                    <td>@book.Title</td>
+                    <td>@book.Author</td>
+                    <td>@book.Price.ToString("C")</td>
+                </tr>
+            }
+  
+
+}
+else 
+{
+    <tr>Your shopping cart is empty.</tr>
+
+}
+
+    </tbody>
+
+    <p>Total Price: @Model.TotalPrice.ToString("C")</p>
+    <form asp-action="Checkout" method="post">
+        <a class="btn btn-primary" asp-controller="Orders" asp-action="Create" asp-route-total=@Model.TotalPrice>Order</a>
+        <a class="btn btn-primary" asp-controller="Books" asp-action="index">Return to Books</a>
+    </form>
+</table>

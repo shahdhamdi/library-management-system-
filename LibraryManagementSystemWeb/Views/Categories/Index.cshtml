@@ -1,0 +1,58 @@
+﻿@model IEnumerable<LibraryManagementSystem.Models.Category>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center"> Categories</h1>
+@if (User.IsInRole("Admin"))
+{
+    <p class="text-center">
+        <a class="btn btn-outline-info" asp-action="Create">Create New</a>
+    </p>
+}
+<form asp-controller="Categories" asp-action="Index" method="get" class="mt-4">
+    <div class="input-group md-form form-sm form-2 pl-0">
+        <input class="form-control my-0 py-1" type="text" placeholder="Search" aria-label="Search" name="searchString">
+        <div class="input-group-append">
+            <button class="btn btn-primary" type="submit">
+                <i class="fas fa-search"></i> Search
+            </button>
+        </div>
+    </div>
+</form>
+<br />
+<br />
+@if (ViewBag.Error != null)
+{
+    <h2>@ViewBag.Error</h2>
+}
+else
+{
+<div class="d-flex justify-content-center">
+@foreach (var item in Model) {
+
+
+        <div class="card" style="width: 18rem; padding-left:20px;padding-right:20px; margin-right:20px; margin-left:20px;">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                <h5 class="card-title">@item.Name</h5>
+                <h5>@item.Books.Count</h5>
+                </div>
+                <p class="card-text">@item.Describtion</p>
+                <div>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.id">Edit</a>
+                        <a asp-action = "Delete" asp - route - id = "@item.id" > Delete </a>
+                    }
+                    <a asp-action="Details" asp-route-id="@item.id">Details</a>
+      
+                </div>
+                <a asp-controller="Books" asp-action="Index" asp-route-id="@item.id" class="btn btn-primary form-control" style="margin-top:10px">View Books</a>
+            </div>
+        </div>
+
+    }
+</div>
+}

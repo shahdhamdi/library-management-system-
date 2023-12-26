@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h4 class="display-4">Welcome to our library</h4>
+    <h6 style="letter-spacing:1px;color:grey">Explore a world of knowledge with our vast collection</h6>
+    <br />
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-body">
+                <img src="~/images/category.jpeg" class="card-img-top" />
+                <br />
+                <br />
+                <a class="btn btn-primary" asp-controller="Categories" asp-action="Index">Categories</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-body">
+                <img src="~/images/book (1).jpeg" class="card-img-top" />
+                <br />
+                <br />
+                <a class="btn btn-primary" asp-controller="Books" asp-action="index">Books</a>
+            </div>
+        </div>
+    </div>
+</div>
+
