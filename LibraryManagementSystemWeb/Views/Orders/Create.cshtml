@@ -28,10 +28,21 @@
                 <span asp-validation-for="totalPrice" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Order" class="btn btn-primary" />
+                <a class="btn btn-primary" asp-controller="Home" asp-action="Index" onclick="success()">Order</a>
+                <a class="btn btn-danger" asp-controller="Home" asp-action="Index" onclick="cancel()">Cancel</a>
+                
             </div>
         </form>
     </div>
 </div>
-
+<script>
+    function success()
+    {
+        alert("order done successfully. happy reading:)");
+    }
+    function cancel() 
+    {
+        alert("order cancelled successfully.");
+    }
+</script>
 

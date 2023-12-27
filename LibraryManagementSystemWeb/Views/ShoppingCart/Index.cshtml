@@ -35,7 +35,9 @@ else
 
     <p>Total Price: @Model.TotalPrice.ToString("C")</p>
     <form asp-action="Checkout" method="post">
-        <a class="btn btn-primary" asp-controller="Orders" asp-action="Create" asp-route-total=@Model.TotalPrice>Order</a>
+        <div>
+        <a class="btn btn-primary"  asp-controller="Orders" asp-action="Create" asp-route-total=@Model.TotalPrice>Order</a>
         <a class="btn btn-primary" asp-controller="Books" asp-action="index">Return to Books</a>
+        </div>
     </form>
 </table>
